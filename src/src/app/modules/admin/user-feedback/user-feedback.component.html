@@ -1,0 +1,20 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Sr.No</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Feedback Status</th>
+            <th>Feedback Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of feedbackList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ data.userName }}</td>
+            <td>{{ data.emailAddress }}</td>
+            <td>{{ data.feedbackStatus }}</td>
+            <td>{{ data.feedbackDescription }}</td>
+          </tr>
+    </tbody>
+</table>

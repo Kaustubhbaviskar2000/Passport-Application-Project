@@ -1,0 +1,67 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+            <th>LoginId</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of userList">
+            <td>{{data.firstName +" " + data.lastName}}</td>
+            <td>{{data.emailAddress}}</td>
+            <td>{{data.phoneNumber}}</td>
+            <td>{{data.loginId}}</td>
+            <td>
+                <button class="btn btn-warning me-2" (click)="HandleEdit(data.userId)"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-danger" (click)="HandleDelete(data.userId)"><i class="bi bi-trash"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="modal" tabindex="-1" [ngClass]="{'show': isEditModalVisible}" [ngStyle]="{'display': isEditModalVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit User</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="isEditModalVisible = false"></button>
+            </div>
+            <div class="modal-body">
+                <form *ngIf="selectedUser">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" [(ngModel)]="selectedUser.firstName" name="fullName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="surname" class="form-label">Surname</label>
+                                <input type="text" class="form-control" id="surname" [(ngModel)]="selectedUser.lastName" name="surname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" [(ngModel)]="selectedUser.emailAddress" name="email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="mobileNumber" class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobileNumber" [(ngModel)]="selectedUser.phoneNumber" name="mobileNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginId" class="form-label">Login ID</label>
+                                <input type="text" class="form-control" id="loginId" [(ngModel)]="selectedUser.loginId" name="loginId" ngModal disabled>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="isEditModalVisible = false">Close</button>
+                <button type="button" class="btn btn-primary" (click)="HandleSave()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

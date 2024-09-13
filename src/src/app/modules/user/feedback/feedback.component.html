@@ -1,0 +1,58 @@
+<main>
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <div class="d-flex align-items-center justify-content-center m-auto">
+          <img src="../../../../assets/img/feed.jpg" alt="" style="margin-top: 13%;">
+        </div>
+      </div>
+      <div class="col-lg-6 col-12">
+        <form [formGroup]="feedbackForm" class="p-5 bg-light needs-validation" (ngSubmit)="handleSubmit()">
+          <div class="mt-5 border shadow p-5">
+            <h3 class="text-success">Feedback</h3>
+            <hr>
+            <!-- Hidden Field for User ID -->
+            <input type="hidden" formControlName="userId">
+            <div class="mb-3">
+                <label for="userName">Enter Name</label>
+                <input type="text" id="userName" class="form-control" formControlName="userName" placeholder="Enter userName">
+                <span *ngIf="feedbackForm.get('userName')?.touched && feedbackForm.get('userName')?.invalid" class="text-danger fw-medium">
+                  <!-- Check for required validation -->
+                  <span *ngIf="feedbackForm.get('userName')?.errors?.['required']">Please enter a userName.</span>
+                  <!-- Check for minlength validation -->
+                  <span *ngIf="feedbackForm.get('userName')?.errors?.['minlength']">Name must be at least 5 characters long.</span>
+                  <!-- Check for maxlength validation -->
+                  <span *ngIf="feedbackForm.get('userName')?.errors?.['maxlength']">Name cannot exceed 45 characters.</span>
+                </span>
+              </div>
+            <div class="mb-3">
+              <label for="emailAddress" class="form-label">Enter your E-mail</label>
+              <input type="emailAddress" id="emailAddress" class="form-control" formControlName="emailAddress" placeholder="Enter Your E-mail">
+              <span *ngIf="feedbackForm.get('emailAddress')?.touched && feedbackForm.get('emailAddress')?.invalid" class="text-danger fw-medium">
+                <span *ngIf="feedbackForm.get('emailAddress')?.errors?.['required']">Please enter your emailAddress address.</span>
+                <span *ngIf="feedbackForm.get('emailAddress')?.errors?.['emailAddress']">Please enter a valid emailAddress address.</span>
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackType" class="form-label">Select Feedback Type</label>
+              <select id="feedType" class="form-select" formControlName="feedbackType" required>
+                <option value=""> -- Select Feedback Type -- </option>
+                <option value="Feedback">Feedback</option>
+                <option value="Complaint">Complaint</option>
+              </select> 
+              <span *ngIf="feedbackForm.get('feedbackType')?.touched && feedbackForm.get('feedbackType')?.invalid" class="text-danger fw-medium">
+                <span *ngIf="feedbackForm.get('feedbackType')?.errors?.['required']">Please select a feedbackDescription type.</span>
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackDescription" class="form-label">Enter feedbackDescription</label>
+              <textarea id="feedbackDescription" class="form-control" formControlName="feedbackDescription" placeholder="Give Feedback..." rows="6" cols="25" required></textarea>
+              <span *ngIf="feedbackForm.get('feedbackDescription')?.touched && feedbackForm.get('feedbackDescription')?.invalid" class="text-danger fw-medium">
+                <span *ngIf="feedbackForm.get('feedbackDescription')?.errors?.['required']">Please enter your feedbackDescription.</span>
+              </span>
+            </div>
+            <button type="submit" id="btnSendFeedback" class="btn btn-success m-3">Send Feedback</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>

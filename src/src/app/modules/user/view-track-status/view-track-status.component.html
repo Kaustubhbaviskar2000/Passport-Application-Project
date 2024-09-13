@@ -1,0 +1,38 @@
+<main>
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <div class="d-flex align-items-center justify-content-center m-auto">
+        <img src="../../../../assets/img/viewTrack.jpg" alt="" style="margin-top: 25%;">
+      </div>
+    </div>
+    <div class="col-lg-6 col-12">
+      <form [formGroup]="trackForm" class="p-5 bg-light" novalidate>
+        <div class="mt-5 border shadow p-5">
+          <h3 class="text-success">Status Tracker</h3>
+          <hr>
+          <div class="mb-3">
+            <label for="passportNumber" class="form-label">Passport Number</label>
+            <input type="text" class="form-control" id="passportNumber" formControlName="passportNumber">
+          </div>
+          <div class="mb-3">
+            <label for="givenName" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="givenName" formControlName="givenName">
+          </div>
+          <div class="mb-3">
+            <label for="applicationType" class="form-label">Type of Application</label>
+            <input type="text" class="form-control" id="applicationType" formControlName="applicationType">
+          </div>
+          <div class="mb-3">
+            <label for="receivedDate" class="form-label">Application Received on Date</label>
+            <input type="date" class="form-control" id="receivedDate" formControlName="receivedDate">
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <textarea class="form-control" id="status" formControlName="status" readonly></textarea>
+          </div>
+          <a routerLink="back" class="btn btn-primary m-3">Close</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

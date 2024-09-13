@@ -1,0 +1,117 @@
+<main>
+  <div class="row">
+    <div class="col-lg-6 col-12 m-auto">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="../../../../assets/img/signupp.jpg" alt="">
+      </div>
+    </div>
+    <div class="col-lg-6 col-12">
+      <form [formGroup]="signupForm" class="p-5 bg-light needs-validation" (ngSubmit)="handleSubmit()">
+        <div class="mt-5 border shadow p-5">
+          <h1 class="text-success">Sign Up</h1>
+          <hr>
+          <div class="mb-3">
+            <label for="firstName">Enter Name</label>
+            <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="Enter name">
+            <span *ngIf="signupForm.get('firstName')?.touched && signupForm.get('firstName')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('firstName')?.errors?.['required']">Please enter a name.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="signupForm.get('firstName')?.errors?.['minlength']">Name must be at least 5 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="signupForm.get('firstName')?.errors?.['maxlength']">Name cannot exceed 45 characters.</span>
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="userlastName">lastName</label>
+            <input type="text" id="userlastName" class="form-control" formControlName="lastName" placeholder="Enter lastName">
+            <span *ngIf="signupForm.get('lastName')?.touched && signupForm.get('lastName')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('lastName')?.errors?.['required']">Please enter a lastName.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="signupForm.get('lastName')?.errors?.['minlength']">lastName must be at least 5 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="signupForm.get('lastName')?.errors?.['maxlength']">lastName cannot exceed 45 characters.</span>
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="date">Date of Birth (DD/MM/YYYY)</label>
+            <input type="date" id="date" class="form-control" formControlName="dateOfBirth" placeholder="Enter DOB">
+            <span *ngIf="signupForm.get('dateOfBirth')?.touched && signupForm.get('dateOfBirth')?.invalid" class="text-danger fw-medium">
+              <span *ngIf="signupForm.get('dateOfBirth')?.errors?.['required']">Please enter your date of birth.</span>
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="userEmail">E-mail Id</label>
+            <input type="emailAddress" id="userEmail" class="form-control" formControlName="emailAddress" placeholder="Enter E-mail">
+            <span *ngIf="signupForm.get('emailAddress')?.touched && signupForm.get('emailAddress')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('emailAddress')?.errors?.['required']">Please enter an emailAddress address.</span>
+              <!-- Check for emailAddress pattern validation -->
+              <span *ngIf="signupForm.get('emailAddress')?.errors?.['emailAddress']">Please enter a valid emailAddress address.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="signupForm.get('emailAddress')?.errors?.['maxlength']">Email cannot exceed 35 characters.</span>
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber">Enter Mobile Number</label>
+            <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" placeholder="Enter mobile number">
+            <span *ngIf="signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('phoneNumber')?.errors?.['required']">Please enter a mobile number.</span>
+              <!-- Check for pattern validation -->
+              <span *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern']">Mobile number must be 10 digits.</span>
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="loginId">Login Id</label>
+            <input type="text" id="loginId" class="form-control" formControlName="loginId" placeholder="Enter Login Id">
+            <span *ngIf="signupForm.get('loginId')?.touched && signupForm.get('loginId')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('loginId')?.errors?.['required']">Please enter a login ID.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="signupForm.get('loginId')?.errors?.['minlength']">Login ID must be at least 6 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="signupForm.get('loginId')?.errors?.['maxlength']">Login ID cannot exceed 25 characters.</span>
+              <!-- Check for pattern validation -->
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter Password">
+            <span *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('password')?.errors?.['required']">Please enter a password.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="signupForm.get('password')?.errors?.['maxlength']">Password cannot exceed 25 characters.</span>
+              <!-- Check for pattern validation -->
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+            <span *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Please confirm your password.</span>
+              <!-- Check for matching password validation -->
+              <span *ngIf="signupForm.hasError('passwordMismatch')">Passwords do not match.</span>
+            </span>
+          </div>
+          
+          <div class="d-flex justify-content-between">
+            <input type="submit" class="btn btn-success mt-3" value="Register">
+            <input type="button" value="Clear" (click)="handleClear()" class="btn btn-warning mt-3">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,66 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Complaint</th>
+        <th>Complaint Status</th>
+        <th>Complaint Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of complaintList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.userName }}</td>
+        <td>{{ data.emailAddress }}</td>
+        <td>{{ data.feedbackType }}</td>
+        <td>{{ data.feedbackStatus }}</td>
+        <td>{{ data.feedbackDescription }}</td>
+        <td>
+          <button class="btn btn-warning me-2" (click)="HandleEdit(data.feedbackId)"><i class="bi bi-pencil"></i></button>
+          <button class="btn btn-danger" (click)="HandleDelete(data.feedbackId)"><i class="bi bi-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Edit Modal -->
+  <div class="modal" tabindex="-1" [ngClass]="{'show': isEditModalVisible}" [ngStyle]="{'display': isEditModalVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Complaint</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="isEditModalVisible = false"></button>
+        </div>
+        <div class="modal-body">
+          <form *ngIf="selectedComplaint">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="selectedComplaint.userName" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="selectedComplaint.emailAddress" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="feedback" class="form-label">Complaint</label>
+              <textarea class="form-control" id="feedback" [(ngModel)]="selectedComplaint.feedbackType" name="feedback"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="feedbackStatus" class="form-label">Complaint Status</label>
+              <select class="form-control" id="feedbackStatus" [(ngModel)]="selectedComplaint.feedbackStatus" name="feedbackStatus">
+                <option *ngFor="let status of feedbackStatus" [value]="status">{{ status }}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="isEditModalVisible = false">Close</button>
+          <button type="button" class="btn btn-primary" (click)="HandleSave()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

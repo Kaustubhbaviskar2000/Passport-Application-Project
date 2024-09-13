@@ -1,0 +1,53 @@
+<main>
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <div class="d-flex align-items-center justify-content-center m-auto">
+        <img src="../../../../assets/img/l2.jpg" alt="">
+      </div>
+    </div>
+    <div class="col-lg-6 col-12">
+      <form [formGroup]="loginForm" class="p-5 bg-light needs-validation" (ngSubmit)="handleSubmit()">
+        <div class="mt-5 border shadow p-5">
+          <h1 class="text-success">Login</h1>
+          <hr>
+          <div class="mb-3">
+            <label for="loginId">Login Id</label>
+            <input type="text" id="loginId" class="form-control" formControlName="loginId" placeholder="Enter Login Id">
+            <span *ngIf="loginForm.get('loginId')?.touched && loginForm.get('loginId')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="loginForm.get('loginId')?.errors?.['required']">Please enter a login ID.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="loginForm.get('loginId')?.errors?.['minlength']">Login ID must be at least 6 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="loginForm.get('loginId')?.errors?.['maxlength']">Login ID cannot exceed 25 characters.</span>
+              <!-- Check for pattern validation -->
+            </span>
+          </div>
+          
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter Password">
+            <span *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-danger fw-medium">
+              <!-- Check for required validation -->
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">Please enter a password.</span>
+              <!-- Check for minlength validation -->
+              <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</span>
+              <!-- Check for maxlength validation -->
+              <span *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password cannot exceed 25 characters.</span>
+              <!-- Check for pattern validation -->
+            </span>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="submit" class="btn btn-success mt-3" value="Login">
+            </div>
+            <div class="col-lg-6">
+              <span class="fw-bold mt-3">Don't have an account..?</span>
+              <a class="btn btn-warning mt-3" (click)="HandleSignUpClick()">Sign up Here</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

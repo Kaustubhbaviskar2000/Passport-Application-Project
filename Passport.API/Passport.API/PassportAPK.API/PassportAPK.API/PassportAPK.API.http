@@ -1,0 +1,6 @@
+@PassportAPK.API_HostAddress = http://localhost:5143
+
+GET {{PassportAPK.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

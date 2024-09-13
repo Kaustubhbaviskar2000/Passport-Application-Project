@@ -1,0 +1,71 @@
+<div class="modal" tabindex="-1" [ngClass]="{'show': isDetailsModalVisible}" [ngStyle]="{'display': isDetailsModalVisible ? 'block' : 'none'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Passport Details</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="isDetailsModalVisible = false"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="selectedPassport">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" [(ngModel)]="selectedPassport.firstName" name="fullName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passportNumber" class="form-label">Passport Number</label>
+                                <input type="text" class="form-control" id="passportNumber" [(ngModel)]="selectedPassport.passportNumber" name="passportNumber" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="passportType" class="form-label">Passport Type</label>
+                                <input type="text" class="form-control" id="passportType" [(ngModel)]="selectedPassport.applicationType" name="passportType" disabled>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <select id="passportStatus" class="form-select" [(ngModel)]="selectedPassport.passportApplicationStatus" name="passportStatus">
+                                <option *ngFor="let status of passportStatus" [value]="status">{{ status }}</option>
+                            </select>                              
+                            <div class="mb-3">
+                                <label for="paymentStatus" class="form-label">Payment Status</label>
+                                <input type="text" class="form-control" id="paymentStatus" [(ngModel)]="selectedPassport.paymentStatus" name="paymentStatus" disabled="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="isDetailsModalVisible = false">Close</button>
+                <button type="button" class="btn btn-primary" (click)="HandleSave()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Sr.No</th>
+            <th>Full Name</th>
+            <th>Passport Number</th>
+            <th>Passport Type</th>
+            <th>Passport Status</th>
+            <th>Payment Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of newPassportList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{data.firstName}} {{data.lastName}}</td>
+            <td>{{ data.passportNumber }}</td>
+            <td>{{ data.passportType }}</td>
+            <td>{{ data.passportApplicationStatus }}</td>
+            <td>{{ data.paymentStatus }}</td>
+            <td>
+                <button class="btn btn-warning me-2" (click)="HandleEdit(data.masterDetailsId)"><i class="bi bi-pencil"></i></button>
+                <!-- <button class="btn btn-danger" (click)="HandleDelete(data.id)"><i class="bi bi-trash"></i></button> -->
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <div class="">
+        <aside id="sidebar">
+            <div class="d-flex">
+              <button class="toggle-btn" #toggleBtn type="button">
+                <i class="bi bi-grid"></i>
+              </button>
+              <div class="sidebar-logo">
+                
+              </div>
+            </div>
+            <ul class="sidebar-nav">
+              <!-- <li class="sidebar-item">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-person"></i>
+                  <span>Profile</span>
+                </a>
+              </li> -->
+              <li class="sidebar-item">
+                <a routerLink="user/newpassport" class="sidebar-link">
+                  <i class="bi bi-passport"></i>
+                  <span>New Passport</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a routerLink="user/renewalpassport" class="sidebar-link">
+                  <i class="bi bi-node-plus"></i>
+                  <span>ReNew Passport</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a routerLink="user/track-status" class="sidebar-link">
+                  <i class="bi bi-search"></i>
+                  <span>Track Passport</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a routerLink="user/payment" class="sidebar-link">
+                  <i class="bi bi-currency-rupee"></i>
+                  <span>Make Payment</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a routerLink="user/feedback" class="sidebar-link">
+                  <i class="bi bi-book-half"></i>
+                  <span>Feedback</span>
+                </a>
+              </li>
+            </ul>
+            <!-- <div class="sidebar-footer">
+              <a routerLink="user/newpassport" class="sidebar-link">
+                  <i class="bi bi-power"></i>
+                <span>Logout</span>
+              </a>
+            </div> -->
+          </aside>
+    </div>
+    <div class="main p-3">
+        <div class="">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
